@@ -1,11 +1,15 @@
 ﻿.main-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000; /* always keeps the navbar at the front */
     display: flex;
     justify-content: space-between;
     align-items: center;
     min-height: 120px;
     width: 100%;
     background: #4056A1;
-    color: white;
+    color: #FFFFFF;
     padding-left: 1.5em;
     padding-right: 1.5em;
 }

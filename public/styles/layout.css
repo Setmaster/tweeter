@@ -9,7 +9,6 @@ html {
 
 *, *:before, *:after {
     box-sizing: inherit;
-    font-family: Bungee, sans-serif;
 }
 
 /*
@@ -20,6 +19,8 @@ body {
     color: #545149;
     background-color: #f4f1ec;
     font-size: 24px;
+    padding-top: 5.5em;
+    font-family: Bungee, sans-serif;
 }
 
 /*
