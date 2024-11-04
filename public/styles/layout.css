@@ -16,8 +16,8 @@ html {
  */
 
 body {
-    color: #545149;
-    background-color: #f4f1ec;
+    color: #FFFFFF;
+    background-color: #222425;
     font-size: 24px;
     padding-top: 5.5em;
     font-family: Bungee, sans-serif;
@@ -26,3 +26,12 @@ body {
 /*
  * Additional CSS can be defined below or in other CSS files, as per instructions
  */
+main{
+    width: 90%;
+    background-color: #222425;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
