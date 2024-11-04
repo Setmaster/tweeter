@@ -47,10 +47,11 @@
             <h2>Josh Smith</h2>
         </div>
     </header>
-<main>
+<!-- Page-specific (main) content here -->
+<main class="container">
     <section class="new-tweet">
         <h2>Compose Tweet</h2>
-        <form>
+        <form method="post" action="/tweets">
             <label for="tweet-text">What are you humming about?</label>
             <textarea name="text" id="tweet-text"></textarea>
             <div class="tweet-bottom-container">
@@ -60,8 +61,5 @@
         </form>
     </section>
 </main>
-
-<!-- Page-specific (main) content here -->
-<main class="container"></main>
 </body>
 </html>
