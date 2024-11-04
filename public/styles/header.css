@@ -1,0 +1,14 @@
+﻿header{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #9b480b;
+    background-image: url("https://www.transparenttextures.com/patterns/inspiration-geometry.png");
+}
+
+header h2{
+    color: #FFFFFF;
+    font-family: "Source Sans 3", sans-serif;
+    font-weight: 300;
+}
