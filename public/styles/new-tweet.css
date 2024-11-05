@@ -34,3 +34,7 @@
 .counter{
     color: #9b480b;
 }
+
+.counter.error {
+    color: red;
+}
