@@ -2,10 +2,12 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 66%;
 }
 .new-tweet form{
     display: flex;
     flex-direction: column;
+    width: 100%;
 }
 
 .new-tweet form div{
