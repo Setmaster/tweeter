@@ -73,3 +73,12 @@
 .tweet footer .icons i:hover {
     color: #DA6612FF;
 }
+
+.avatar {
+    border-radius: 50%;
+    background-color: white;
+    padding: 5px; /* Adjust padding as needed */
+    width: 50px; /* Adjust width as needed */
+    height: 50px; /* Adjust height as needed */
+    box-sizing: border-box;
+}
