@@ -14,6 +14,21 @@
     padding-right: 1.5em;
 }
 
+.main-nav .fa-angles-down{
+    color: #9b480b;
+    animation: moveUpDown 2s ease-in-out infinite;
+}
+
+/* animated the icon moving up and down */
+@keyframes moveUpDown {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-5px);
+    }
+}
+
 .options-container{
     display: flex;
     flex-direction: column;
@@ -28,4 +43,11 @@
 .option-highlight{
     font-family: "Source Sans 3", sans-serif;
     font-weight: 600;
+}
+
+/* make nav background invisible if screen is smaller than 720px wide */
+@media screen and (max-width: 900px) {
+    .main-nav {
+        background: none;
+    }
 }

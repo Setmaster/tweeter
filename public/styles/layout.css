@@ -35,3 +35,21 @@ main{
     justify-content: center;
     align-items: center;
 }
+
+.main-container{
+    flex-direction: row;
+    display: flex;
+    margin-top: 4em;
+}
+
+@media screen and (max-width: 900px) {
+    .main-container{
+        flex-direction: column;
+        display: flex;
+        align-items: center;
+        margin-top: 0;
+    }
+    body{
+        padding-top: 0;
+    }
+}

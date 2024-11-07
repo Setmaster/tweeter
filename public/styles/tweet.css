@@ -1,4 +1,7 @@
-﻿.tweet {
+﻿.tweet-container{
+    width: 76%;
+}
+.tweet {
     background-color: #1e3e61;
     border: 1px solid #9a470b;
     padding: 1.10em;
@@ -38,7 +41,7 @@
 
 .tweet header strong {
     font-weight: bold;
-    color: #333;
+    color: #9a470b;
 }
 
 .tweet header span {
@@ -77,8 +80,8 @@
 .avatar {
     border-radius: 50%;
     background-color: white;
-    padding: 5px; /* Adjust padding as needed */
-    width: 50px; /* Adjust width as needed */
-    height: 50px; /* Adjust height as needed */
+    padding: 5px;
+    width: 50px;
+    height: 50px;
     box-sizing: border-box;
 }
