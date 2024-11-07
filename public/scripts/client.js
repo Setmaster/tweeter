@@ -1,12 +1,27 @@
 $(document).ready(function () {
-
     const $form = $('form');
-
+    const maxTweetLength = 140;
+    
     $form.on('submit', function (event) {
         event.preventDefault();
+        
+        const $tweetText = $('#tweet-text');
+        const tweetContent = $tweetText.val().trim(); // trim whitepsace
 
+        // validation
+        if (tweetContent === "") {
+            alert("Your tweet content is empty! Please write something before submitting.");
+            return;
+        }
+
+        if (tweetContent.length > maxTweetLength) {
+            alert(`Your tweet is too long! Please keep your tweet under ${maxTweetLength} characters.`);
+            return;
+        }
+
+        // we only serialize after validation passes
         const formData = $(this).serialize();
-
+        
         $.ajax({
             type: 'POST',
             url: '/tweets',
