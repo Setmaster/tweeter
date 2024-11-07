@@ -40,3 +40,13 @@
 .counter.error {
     color: red;
 }
+
+#error-alert {
+    display: none; /* hidden */
+    color: white;
+    background-color: red;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    font-weight: bold;
+}

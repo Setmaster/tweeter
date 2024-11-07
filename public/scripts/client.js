@@ -1,7 +1,7 @@
 // validates the content of the tweet
 const validateTweet = function (tweetContent) {
     if (tweetContent === "") {
-        return "Your tweet content is empty! Please write something before submitting.";
+        return "Your tweet's content is empty! Please write something before submitting.";
     }
 
     if (tweetContent.length > 140) {
@@ -12,9 +12,13 @@ const validateTweet = function (tweetContent) {
 }
 $(document).ready(function () {
     const $form = $('form');
+    const $errorAlert = $('#error-alert');
     
     $form.on('submit', function (event) {
         event.preventDefault();
+
+        // reset error alert on submit
+        $errorAlert.slideUp();
         
         const $tweetText = $('#tweet-text');
         const tweetContent = $tweetText.val().trim(); // trim whitepsace
@@ -22,7 +26,7 @@ $(document).ready(function () {
         //validation
         const errorMessage = validateTweet(tweetContent);
         if (errorMessage){
-            alert(errorMessage);
+            $errorAlert.text(errorMessage).slideDown();
             return;
         }
         
