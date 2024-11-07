@@ -21,8 +21,12 @@
     }
 
     // make nav background invisible if screen is smaller than 720px wide
-    @media screen and (max-width: 900px) {
+    @media screen and (max-width: $screen-size-1) {
         background: none;
+        .fa-angles-down {
+            color: $color-secondary;
+            animation: moveUpDown 2s ease-in-out infinite;
+        }
     }
 }
 

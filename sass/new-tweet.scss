@@ -19,11 +19,12 @@
 }
 
 #tweet-text {
-    color: white;
+    color: $color-text;
     border: none;
     border-bottom: 6px solid $color-primary;
     background-color: transparent;
     outline: none;
+    font-family: $font-primary;
 }
 
 .tweet-bottom-container {

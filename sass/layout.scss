@@ -51,14 +51,14 @@ main {
     display: flex;
     margin-top: 4em;
 
-    @media screen and (max-width: 900px) {
+    @media screen and (max-width: $screen-size-1) {
         flex-direction: column;
         align-items: center;
         margin-top: 0;
     }
 }
 
-@media screen and (max-width: 900px) {
+@media screen and (max-width: $screen-size-1) {
     body {
         padding-top: 0;
     }
