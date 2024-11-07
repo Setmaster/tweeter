@@ -5,10 +5,12 @@ class Tweet {
         this.createdAt = createdAt;
     }
 
+    // method to get formatted time
     getFormattedTime() {
         return timeago.format(this.createdAt);
     }
 
+    // method to get tweet as HTML
     toHTML() {
         return `
             <article class="tweet">
@@ -45,10 +47,12 @@ const validateTweet = function (tweetContent) {
 
     return null; // No errors, validation passed
 }
+
 $(document).ready(function () {
     const $form = $('form');
     const $errorAlert = $('#error-alert');
     
+    // handle form submission of tweet
     $form.on('submit', function (event) {
         event.preventDefault();
 
@@ -68,6 +72,7 @@ $(document).ready(function () {
         // we only serialize after validation passes
         const formData = $(this).serialize();
         
+        // send post request containing form data to /tweets route
         $.ajax({
             type: 'POST',
             url: '/tweets',
@@ -88,6 +93,7 @@ $(document).ready(function () {
         });
     });
 
+    // send get request to /tweets route to fetch tweets
     const loadTweets = function () {
         $.ajax({
             url: '/tweets',
@@ -103,14 +109,16 @@ $(document).ready(function () {
         });
     };
 
+    // create a new Tweet instance and returns it as HTML
     const createTweetElement = function (tweetData) {
         console.log("Creating tweet for:", tweetData);
         const tweet = new Tweet(tweetData.user, tweetData.content, tweetData.created_at);
         return $(tweet.toHTML());
     };
 
+    // receives an array of tweet objects, converts each of them into html and then preprends to the tweets container
     const renderTweets = function (tweets) {
-        console.log("Rendering tweets");
+        console.log("Rendering tweets: ", tweets);
         const $tweetsContainer = $('.tweet-container');
         // reset container so don't end up with duplicates
         $tweetsContainer.empty();
