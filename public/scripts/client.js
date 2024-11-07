@@ -54,6 +54,7 @@ $(document).ready(function () {
     const $newTweetSection = $('.new-tweet');
     const $optionsContainer = $('.options-container');
     const $scrollToTopButton = $('.scroll-to-top');
+    const $newTweetTextarea = $newTweetSection.find('textarea');
     
     // controls display of the scroll to top of page button and create tweet nav button
     $(window).scroll(function() {
@@ -74,7 +75,13 @@ $(document).ready(function () {
     
     // toggle visibility of the form on click
     $optionsContainer.on('click', function () {
-        $newTweetSection.slideToggle();
+        // if the toggle was to slideDown then focus on the text area
+        if (!($newTweetSection.is(':visible'))) {
+            $newTweetSection.slideDown();
+            $newTweetTextarea.focus();
+        }else{
+            $newTweetSection.slideUp();
+        }
     });
 
 
