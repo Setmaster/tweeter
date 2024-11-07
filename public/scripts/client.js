@@ -24,8 +24,8 @@ $(document).ready(function () {
             error: function (xhr, status, error) {
                 console.error('AJAX error:', status, error);
             }
-        })
-    })
+        });
+    });
 
     const loadTweets = function () {
         $.ajax({
@@ -42,32 +42,33 @@ $(document).ready(function () {
         });
     };
 
-
     const createTweetElement = function (tweet) {
-        console.log("Creating tweet for:", tweet)
-        const {user, content, created_at} = tweet;
-        const timeAgo = new Date(created_at).toLocaleString();
+        console.log("Creating tweet for:", tweet);
+        const { user, content, created_at } = tweet;
+
+        // Use the timeago library to format the created_at timestamp
+        const timeAgo = timeago.format(created_at);
 
         const $tweet = $(`
-    <article class="tweet">
-      <header>
-        <div>
-          <img src="${user.avatars}" alt="User Avatar" class="avatar">
-          <strong>${user.name}</strong>
-        </div>
-        <span>${user.handle}</span>
-      </header>
-      <p>${content.text}</p>
-      <footer>
-        <span>${timeAgo}</span>
-        <div class="icons">
-          <i class="fa-solid fa-flag"></i>
-          <i class="fa-solid fa-retweet"></i>
-          <i class="fa-solid fa-heart"></i>
-        </div>
-      </footer>
-    </article>
-  `);
+            <article class="tweet">
+                <header>
+                    <div>
+                        <img src="${user.avatars}" alt="User Avatar" class="avatar">
+                        <strong>${user.name}</strong>
+                    </div>
+                    <span>${user.handle}</span>
+                </header>
+                <p>${content.text}</p>
+                <footer>
+                    <span>${timeAgo}</span>
+                    <div class="icons">
+                        <i class="fa-solid fa-flag"></i>
+                        <i class="fa-solid fa-retweet"></i>
+                        <i class="fa-solid fa-heart"></i>
+                    </div>
+                </footer>
+            </article>
+        `);
 
         return $tweet;
     };
@@ -83,6 +84,6 @@ $(document).ready(function () {
             $tweetsContainer.prepend($tweet);
         }
     };
-    
+
     loadTweets();
 });
