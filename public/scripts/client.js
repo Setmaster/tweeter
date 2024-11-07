@@ -1,3 +1,38 @@
+class Tweet {
+    constructor(user, content, createdAt) {
+        this.user = user;
+        this.content = content;
+        this.createdAt = createdAt;
+    }
+
+    getFormattedTime() {
+        return timeago.format(this.createdAt);
+    }
+
+    toHTML() {
+        return `
+            <article class="tweet">
+                <header>
+                    <div>
+                        <img src="${this.user.avatars}" alt="User Avatar" class="avatar">
+                        <strong>${this.user.name}</strong>
+                    </div>
+                    <span>${this.user.handle}</span>
+                </header>
+                <p>${this.content.text}</p>
+                <footer>
+                    <span>${this.getFormattedTime()}</span>
+                    <div class="icons">
+                        <i class="fa-solid fa-flag"></i>
+                        <i class="fa-solid fa-retweet"></i>
+                        <i class="fa-solid fa-heart"></i>
+                    </div>
+                </footer>
+            </article>
+        `;
+    }
+}
+
 // validates the content of the tweet
 const validateTweet = function (tweetContent) {
     if (tweetContent === "") {
@@ -68,35 +103,10 @@ $(document).ready(function () {
         });
     };
 
-    const createTweetElement = function (tweet) {
-        console.log("Creating tweet for:", tweet);
-        const { user, content, created_at } = tweet;
-
-        // Use the timeago library to format the created_at timestamp
-        const timeAgo = timeago.format(created_at);
-
-        const $tweet = $(`
-            <article class="tweet">
-                <header>
-                    <div>
-                        <img src="${user.avatars}" alt="User Avatar" class="avatar">
-                        <strong>${user.name}</strong>
-                    </div>
-                    <span>${user.handle}</span>
-                </header>
-                <p>${content.text}</p>
-                <footer>
-                    <span>${timeAgo}</span>
-                    <div class="icons">
-                        <i class="fa-solid fa-flag"></i>
-                        <i class="fa-solid fa-retweet"></i>
-                        <i class="fa-solid fa-heart"></i>
-                    </div>
-                </footer>
-            </article>
-        `);
-
-        return $tweet;
+    const createTweetElement = function (tweetData) {
+        console.log("Creating tweet for:", tweetData);
+        const tweet = new Tweet(tweetData.user, tweetData.content, tweetData.created_at);
+        return $(tweet.toHTML());
     };
 
     const renderTweets = function (tweets) {
