@@ -1,7 +1,7 @@
 # Tweeter Project
 
-![APP on a small screen](docs/screenshot-1.png)
-![APP on a big screen](docs/screenshot-2.png)
+![APP on a small screen](docs/app-small-screen.png)
+![APP on a big screen](docs/app-large-screen.png)
 
 Tweeter is a simple, single-page Twitter clone.
 
