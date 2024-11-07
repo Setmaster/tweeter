@@ -55,18 +55,21 @@ $(document).ready(function () {
     const $optionsContainer = $('.options-container');
     const $scrollToTopButton = $('.scroll-to-top');
     
-    // controls display of the scroll to top of page button
+    // controls display of the scroll to top of page button and create tweet nav button
     $(window).scroll(function() {
         if ($(this).scrollTop() > 100) {
             $scrollToTopButton.slideDown();
+            $optionsContainer.slideUp();
         } else {
             $scrollToTopButton.slideUp();
+            $optionsContainer.slideDown();
         }
     });
 
     // scroll to top
     $scrollToTopButton.on('click', function () {
         $('html, body').animate({scrollTop: 0}, 100);
+        $newTweetSection.slideDown();
     });
     
     // toggle visibility of the form on click
