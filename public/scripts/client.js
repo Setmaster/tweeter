@@ -17,6 +17,9 @@ $(document).ready(function () {
                 // reset input
                 $('#tweet-text').val('');
                 $('.counter').text(140);
+
+                // reload tweets after a new one is made
+                loadTweets();
             },
             error: function (xhr, status, error) {
                 console.error('AJAX error:', status, error);
@@ -24,13 +27,28 @@ $(document).ready(function () {
         })
     })
 
+    const loadTweets = function () {
+        $.ajax({
+            url: '/tweets',
+            method: 'GET',
+            dataType: 'json',
+            success: function (tweets) {
+                console.log('Tweets loaded:', tweets);
+                renderTweets(tweets);
+            },
+            error: function (xhr, status, error) {
+                console.error('Failed to load tweets:', status, error);
+            }
+        });
+    };
 
-const createTweetElement = function(tweet) {
-    console.log("Creating tweet for:", tweet)
-    const { user, content, created_at } = tweet;
-    const timeAgo = new Date(created_at).toLocaleString();
 
-    const $tweet = $(`
+    const createTweetElement = function (tweet) {
+        console.log("Creating tweet for:", tweet)
+        const {user, content, created_at} = tweet;
+        const timeAgo = new Date(created_at).toLocaleString();
+
+        const $tweet = $(`
     <article class="tweet">
       <header>
         <div>
@@ -51,44 +69,20 @@ const createTweetElement = function(tweet) {
     </article>
   `);
 
-    return $tweet;
-};
+        return $tweet;
+    };
 
-const renderTweets = function(tweets) {
-    console.log("Rendering tweets");
-    const $tweetsContainer = $('.tweet-container');
-    $tweetsContainer.empty();
+    const renderTweets = function (tweets) {
+        console.log("Rendering tweets");
+        const $tweetsContainer = $('.tweet-container');
+        // reset container so don't end up with duplicates
+        $tweetsContainer.empty();
 
-    for (const tweet of tweets) {
-        const $tweet = createTweetElement(tweet);
-        $tweetsContainer.append($tweet);
-    }
-};
-
-const testData = [
-    {
-        "user": {
-            "name": "Newton",
-            "avatars": "https://i.imgur.com/73hZDYK.png",
-            "handle": "@SirIsaac"
-        },
-        "content": {
-            "text": "If I have seen further it is by standing on the shoulders of giants"
-        },
-        "created_at": 1730749431693
-    },
-    {
-        "user": {
-            "name": "Descartes",
-            "avatars": "https://i.imgur.com/nlhLi3I.png",
-            "handle": "@rd"
-        },
-        "content": {
-            "text": "Je pense , donc je suis"
-        },
-        "created_at": 1730835831693
-    }
-];
-
-renderTweets(testData);
+        for (const tweet of tweets) {
+            const $tweet = createTweetElement(tweet);
+            $tweetsContainer.prepend($tweet);
+        }
+    };
+    
+    loadTweets();
 });
