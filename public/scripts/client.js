@@ -51,7 +51,15 @@ const validateTweet = function (tweetContent) {
 $(document).ready(function () {
     const $form = $('form');
     const $errorAlert = $('#error-alert');
+    const $newTweetSection = $('.new-tweet');
+    const $optionsContainer = $('.options-container');
     
+    // toggle visibility of the form on click
+    $optionsContainer.on('click', function () {
+        $newTweetSection.slideToggle();
+    });
+
+
     // handle form submission of tweet
     $form.on('submit', function (event) {
         event.preventDefault();
@@ -93,7 +101,7 @@ $(document).ready(function () {
         });
     });
 
-    // send get request to /tweets route to fetch tweets
+    // send get request to /tweets route to fetch tweets array
     const loadTweets = function () {
         $.ajax({
             url: '/tweets',
