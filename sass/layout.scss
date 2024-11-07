@@ -3,6 +3,8 @@
  * https://css-tricks.com/international-box-sizing-awareness-day/
  * Do not modify these two selectors, please
  */
+@import 'variables';
+
 html {
     box-sizing: border-box;
 }
@@ -26,9 +28,17 @@ body {
 /*
  * Additional CSS can be defined below or in other CSS files, as per instructions
  */
-main{
+body {
+    color: $color-text;
+    background-color: $color-background;
+    font-size: 24px;
+    padding-top: 5.5em;
+    font-family: $font-secondary;
+}
+
+main {
     width: 90%;
-    background-color: #222425;
+    background-color: $color-background;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
@@ -36,20 +46,20 @@ main{
     align-items: center;
 }
 
-.main-container{
+.main-container {
     flex-direction: row;
     display: flex;
     margin-top: 4em;
-}
 
-@media screen and (max-width: 900px) {
-    .main-container{
+    @media screen and (max-width: 900px) {
         flex-direction: column;
-        display: flex;
         align-items: center;
         margin-top: 0;
     }
-    body{
+}
+
+@media screen and (max-width: 900px) {
+    body {
         padding-top: 0;
     }
 }

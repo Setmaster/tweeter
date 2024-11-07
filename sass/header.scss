@@ -1,29 +1,28 @@
-﻿.main-header{
+﻿@import 'variables';
+
+.main-header {
     width: 30%;
     height: 50%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: #9b480b;
+    background-color: $color-primary;
     background-image: url("https://www.transparenttextures.com/patterns/inspiration-geometry.png");
     margin-left: 2em;
     border-radius: 10px;
 
-}
+    h2 {
+        color: $color-text;
+        font-family: $font-primary;
+        font-weight: 300;
+    }
 
-.main-header h2{
-    color: #FFFFFF;
-    font-family: "Source Sans 3", sans-serif;
-    font-weight: 300;
-}
+    .header-img {
+        margin-top: 1em;
+    }
 
-.header-img{
-    margin-top: 1em;
-}
-
-@media screen and (max-width: 900px) {
-    .main-header{
+    @media screen and (max-width: 900px) {
         width: 100%;
         height: 100%;
         margin-left: 0;
